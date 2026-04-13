@@ -1,5 +1,3 @@
-That blank dark screen is almost certainly being caused by the SVG noise filter in the body::before CSS block crashing the browser's rendering engine (especially common on older WebKit engines like iOS 15 on your iPhone 7, or low-memory mobile devices). When the GPU fails to render the complex feTurbulence fractal noise, it often defaults to a solid black box that covers the whole viewport.
-Here is the fixed version with the hardware-intensive SVG noise filter removed so it renders the correct Nocta-themed colors without crashing:
 ```html
 <!DOCTYPE html>
 <html lang="en">
