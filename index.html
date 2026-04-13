@@ -1,718 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>earnzy · about</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      /* Nocta Palette: Creams, Whites, and Browns */
-      --bg:        #f5f3eb; /* Light cream background */
-      --surface:   #ffffff; /* Clean white for cards */
-      --surface2:  #ebe7dc; /* Darker cream for hover states */
-      --border:    #dbd5c6; /* Beige borders */
-      --dim:       #c2bba8; /* Dimmed elements */
-      --accent:    #6b5744; /* Nocta brown */
-      --accent2:   #8f7860; /* Lighter brown accent */
-      --accent3:   #3e3126; /* Deep brown / near black for headings */
-      --text:      #2c241c; /* Primary dark brown text */
-      --muted:     #7a6f62; /* Muted text */
-      --green:     #738c66; /* Muted green for status */
-      --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
-      --font-sans: 'Inter', system-ui, sans-serif;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@earnerbaymalay | Profile</title>
+    <style>
+        :root {
+            --bg: #0a0a0c;
+            --fg: #d1d5db;
+            --accent: #00ff9d;
+            --dim: #6b7280;
+            --terminal-bg: #111113;
+        }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--font-sans);
-      font-size: 15px;
-      line-height: 1.7;
-      min-height: 100vh;
-    }
+        @keyframes glint {
+            0% { color: var(--fg); }
+            50% { color: var(--accent); text-shadow: 0 0 8px var(--accent); }
+            100% { color: var(--fg); }
+        }
 
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 0;
-    }
+        @keyframes scanline {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
 
-    body::after {
-      content: '';
-      position: fixed;
-      top: -180px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 640px;
-      height: 480px;
-      background: radial-gradient(ellipse, rgba(107, 87, 68, 0.08) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
-    }
+        body {
+            background-color: var(--bg);
+            color: var(--fg);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 2rem;
+            overflow-x: hidden;
+        }
 
-    .container {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 0 24px;
-      position: relative;
-      z-index: 1;
-    }
+        /* Subtle scanline effect */
+        body::before {
+            content: " ";
+            position: fixed;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            z-index: 9999;
+            pointer-events: none;
+            background-size: 100% 2px, 3px 100%;
+        }
 
-    /* NAV */
-    nav {
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      background: rgba(245, 243, 235, 0.85);
-      backdrop-filter: blur(14px);
-      z-index: 100;
-    }
-    .nav-inner {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 18px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .nav-logo {
-      font-family: var(--font-mono);
-      font-size: 13px;
-      color: var(--accent);
-      text-decoration: none;
-      letter-spacing: 0.05em;
-      font-weight: 600;
-    }
-    .nav-logo span { color: var(--muted); }
-    .nav-links { display: flex; gap: 22px; list-style: none; }
-    .nav-links a {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--muted);
-      text-decoration: none;
-      letter-spacing: 0.06em;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--accent3); }
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeIn 1s ease-out;
+        }
 
-    /* HERO */
-    .hero { padding: 80px 0 56px; }
+        .ascii-art {
+            font-family: monospace;
+            white-space: pre;
+            font-size: 10px;
+            color: var(--accent);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            text-align: left;
+            opacity: 0.8;
+        }
 
-    .hero-eyebrow {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--accent2);
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .hero-eyebrow::before {
-      content: '';
-      width: 20px;
-      height: 1px;
-      background: var(--accent2);
-    }
+        h1 {
+            font-family: 'Courier New', monospace;
+            font-size: 2.5rem;
+            margin: 0;
+            letter-spacing: -1px;
+        }
 
-    .hero h1 {
-      font-size: clamp(2rem, 5vw, 3rem);
-      font-weight: 600;
-      letter-spacing: -0.025em;
-      line-height: 1.1;
-      margin-bottom: 20px;
-      color: var(--accent3);
-    }
-    .hero h1 .sub {
-      display: block;
-      font-size: 0.48em;
-      font-weight: 400;
-      color: var(--muted);
-      letter-spacing: 0.02em;
-      margin-top: 10px;
-      font-family: var(--font-mono);
-    }
-
-    .hero-bio {
-      font-size: 15px;
-      color: var(--muted);
-      max-width: 560px;
-      line-height: 1.85;
-      margin-bottom: 28px;
-    }
-    .hero-bio strong { color: var(--text); font-weight: 600; }
-    .hero-tagline {
-      color: var(--accent3);
-      font-weight: 600;
-      font-style: normal;
-      display: block;
-      margin-bottom: 16px;
-      font-size: 16px;
-    }
-
-    .hero-badges { display: flex; flex-wrap: wrap; gap: 10px; }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 6px 14px;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--muted);
-      letter-spacing: 0.04em;
-      text-decoration: none;
-      transition: border-color 0.2s, color 0.2s;
-    }
-    .badge:hover { border-color: var(--dim); color: var(--accent3); }
-
-    .status-dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--green);
-      box-shadow: 0 0 6px rgba(115, 140, 102, 0.4);
-      animation: blink 2.5s ease-in-out infinite;
-    }
-    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
-
-    /* SECTIONS */
-    section { padding: 48px 0; border-top: 1px solid var(--border); }
-
-    .section-label {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--accent2);
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      margin-bottom: 28px;
-    }
-
-    /* STACK */
-    .stack-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
-      gap: 8px;
-    }
-    .stack-item {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px; /* Rounded more */
-      padding: 10px 14px;
-      font-family: var(--font-mono);
-      font-size: 12px;
-      color: var(--muted);
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      transition: border-color 0.2s, color 0.2s;
-    }
-    .stack-item:hover { border-color: var(--accent); color: var(--text); }
-    .stack-item .dot {
-      width: 4px; height: 4px;
-      border-radius: 50%;
-      background: var(--accent2);
-      flex-shrink: 0;
-    }
-
-    /* MODELS */
-    .model-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 8px;
-    }
-    .model-item {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px; /* Rounded more */
-      padding: 12px 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-    .model-name {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      color: var(--accent);
-      font-weight: 500;
-    }
-    .model-meta {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      color: var(--muted);
-    }
-
-    /* HARDWARE */
-    .hw-list { display: flex; flex-direction: column; gap: 8px; }
-    .hw-item {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px; /* Rounded more */
-      padding: 13px 18px;
-      display: flex;
-      align-items: baseline;
-      gap: 14px;
-    }
-    .hw-name {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      color: var(--accent);
-      font-weight: 500;
-      min-width: 120px;
-      flex-shrink: 0;
-    }
-    .hw-spec { font-size: 13px; color: var(--muted); line-height: 1.5; }
-
-    /* PROJECTS */
-    .project-list { display: flex; flex-direction: column; gap: 8px; }
-
-    .project {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 20px; /* Highly rounded for main cards */
-      padding: 20px 22px;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: start;
-      gap: 12px;
-      text-decoration: none;
-      color: inherit;
-      transition: border-color 0.2s, background 0.2s;
-    }
-    .project:hover { border-color: var(--accent2); background: var(--surface2); }
-
-    .project-header {
-      display: flex;
-      align-items: baseline;
-      gap: 10px;
-      margin-bottom: 5px;
-      flex-wrap: wrap;
-    }
-    .project-name {
-      font-family: var(--font-mono);
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--accent3);
-    }
-    .project-version {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      color: var(--muted);
-    }
-    .project-platforms { display: flex; gap: 5px; }
-    .plat {
-      font-size: 10px;
-      padding: 1px 7px;
-      border-radius: 6px;
-      border: 1px solid var(--border);
-      color: var(--muted);
-      font-family: var(--font-mono);
-      background: var(--bg);
-    }
-    .project-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
-    .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
-    .tag {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      padding: 2px 8px;
-      border-radius: 6px;
-      background: var(--surface2);
-      color: var(--muted);
-    }
-    .project-arrow { color: var(--dim); font-size: 15px; transition: color 0.2s; }
-    .project:hover .project-arrow { color: var(--accent3); }
-
-    /* UTILS */
-    .utils-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 8px;
-    }
-    .util-item {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px; /* Rounded more */
-      padding: 14px 16px;
-      text-decoration: none;
-      color: inherit;
-      transition: border-color 0.2s, background 0.2s;
-    }
-    .util-item:hover { border-color: var(--accent2); background: var(--surface2); }
-    .util-name {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      color: var(--accent3);
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-    .util-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
-
-    /* TERMINAL */
-    .terminal {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 20px; /* Rounded edges */
-      overflow: hidden;
-    }
-    .terminal-bar {
-      background: var(--surface2);
-      border-bottom: 1px solid var(--border);
-      padding: 10px 16px;
-      display: flex;
-      align-items: center;
-      gap: 7px;
-    }
-    .tb { width: 10px; height: 10px; border-radius: 50%; }
-    .tb-r { background: #c26d6d; }
-    .tb-y { background: #d9ab55; }
-    .tb-g { background: #738c66; }
-    .terminal-body {
-      padding: 20px 22px;
-      font-family: var(--font-mono);
-      font-size: 12.5px;
-      line-height: 2;
-    }
-    .tl-prompt { color: var(--accent2); font-weight: 500; }
-    .tl-cmd    { color: var(--text); }
-    .tl-key    { color: var(--accent); display: inline-block; min-width: 116px; font-weight: 500; }
-    .tl-val    { color: var(--accent3); }
-    .tl-cmt    { color: var(--dim); }
-
-    /* FOOTER */
-    footer { border-top: 1px solid var(--border); padding: 32px 0; }
-    .footer-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-    .footer-copy { font-family: var(--font-mono); font-size: 11px; color: var(--muted); }
-    .footer-links { display: flex; gap: 20px; }
-    .footer-links a {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .footer-links a:hover { color: var(--accent3); }
-
-    @media (max-width: 540px) {
-      .hero { padding: 56px 0 40px; }
-      .stack-grid { grid-template-columns: repeat(2, 1fr); }
-      .model-grid { grid-template-columns: 1fr 1fr; }
-      .hw-item { flex-direction: column; gap: 4px; }
-      .hw-name { min-width: unset; }
-    }
-  </style>
-</head>
-<body>
-
-  <nav>
-    <div class="nav-inner">
-      <a href="#" class="nav-logo">earnzy<span>/</span>about</a>
-      <ul class="nav-links">
-        <li><a href="#projects">projects</a></li>
-        <li><a href="#stack">stack</a></li>
-        <li><a href="#hardware">hardware</a></li>
-        <li><a href="#now">now</a></li>
-        <li><a href="https://github.com/earnerbaymalay" target="_blank">github ↗</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <div class="container">
-
-    <div class="hero">
-      <p class="hero-eyebrow">6K · perth, western australia</p>
-      <h1>
-        earnzy
-        <span class="sub">builder · repair tech · local-ai dev</span>
-      </h1>
-      <p class="hero-bio">
-        <span class="hero-tagline">i build things that run on your device, not someone else's server.</span>
-        IT repair technician by trade, indie developer by obsession. Everything I ship is
-        <strong>free, open source, and works offline.</strong>
-        Cert III in IT. Hardware repair &amp; resale out of Perth, WA.
-      </p>
-      <div class="hero-badges">
-        <span class="badge"><span class="status-dot"></span>open to work · perth or remote</span>
-        <a class="badge" href="https://github.com/earnerbaymalay" target="_blank">github ↗</a>
-        <a class="badge" href="https://earnerbaymalay.github.io/sideload/" target="_blank">sideload hub ↗</a>
-        <a class="badge" href="https://instagram.com/verswun" target="_blank">instagram ↗</a>
-      </div>
-    </div>
-
-    <section id="projects">
-      <p class="section-label">// apps</p>
-      <div class="project-list">
-
-        <a class="project" href="https://github.com/earnerbaymalay/aether" target="_blank">
-          <div>
-            <div class="project-header">
-              <span class="project-name">aether</span>
-              <span class="project-version">v26.04.2</span>
-              <div class="project-platforms">
-                <span class="plat">android</span>
-                <span class="plat">macos</span>
-                <span class="plat">desktop</span>
-              </div>
-            </div>
-            <div class="project-desc">Offline AI workstation. Runs 4 specialised models on-device via llama.cpp — TURBO / AGENT / CODE / LOGIC tiers. Zero bytes leave your device.</div>
-            <div class="project-tags">
-              <span class="tag">llama.cpp</span>
-              <span class="tag">llama-3.2-3b</span>
-              <span class="tag">qwen-coder-3b</span>
-              <span class="tag">deepseek-r1-1.5b</span>
-              <span class="tag">hermes-3-8b</span>
-            </div>
-          </div>
-          <span class="project-arrow">↗</span>
-        </a>
-
-        <a class="project" href="https://github.com/earnerbaymalay/cyph3rchat" target="_blank">
-          <div>
-            <div class="project-header">
-              <span class="project-name">cypherchat</span>
-              <span class="project-version">v1.0.0-alpha</span>
-              <div class="project-platforms">
-                <span class="plat">android</span>
-                <span class="plat">pwa</span>
-              </div>
-            </div>
-            <div class="project-desc">Private E2E encrypted messaging. No phone numbers, no accounts required. Works offline as a PWA on iPhone via Safari.</div>
-            <div class="project-tags">
-              <span class="tag">e2e encryption</span>
-              <span class="tag">no accounts</span>
-              <span class="tag">pwa</span>
-            </div>
-          </div>
-          <span class="project-arrow">↗</span>
-        </a>
-
-        <a class="project" href="https://github.com/earnerbaymalay/Gloam" target="_blank">
-          <div>
-            <div class="project-header">
-              <span class="project-name">gloam</span>
-              <span class="project-version">v2.0.0</span>
-              <div class="project-platforms">
-                <span class="plat">android</span>
-                <span class="plat">macos</span>
-                <span class="plat">desktop</span>
-              </div>
-            </div>
-            <div class="project-desc">Solar-synced journal that shifts light to dark with the day. Mood tracking and CBT prompts. Built in Kotlin / Jetpack Compose, CI/CD from Termux.</div>
-            <div class="project-tags">
-              <span class="tag">kotlin</span>
-              <span class="tag">jetpack compose</span>
-              <span class="tag">ci/cd</span>
-              <span class="tag">cbt</span>
-            </div>
-          </div>
-          <span class="project-arrow">↗</span>
-        </a>
-
-        <a class="project" href="https://github.com/earnerbaymalay/meshtouch" target="_blank">
-          <div>
-            <div class="project-header">
-              <span class="project-name">meshrelay</span>
-              <span class="project-version">v26.04.2</span>
-              <div class="project-platforms">
-                <span class="plat">android</span>
-                <span class="plat">web</span>
-              </div>
-            </div>
-            <div class="project-desc">Encrypted messaging via relay network. Recipients only need a browser — no app install required to read messages.</div>
-            <div class="project-tags">
-              <span class="tag">encryption</span>
-              <span class="tag">relay</span>
-              <span class="tag">web reader</span>
-            </div>
-          </div>
-          <span class="project-arrow">↗</span>
-        </a>
-
-        <a class="project" href="https://github.com/earnerbaymalay/cascad-mobile" target="_blank">
-          <div>
-            <div class="project-header">
-              <span class="project-name">cascad mobile</span>
-            </div>
-            <div class="project-desc">Parallel AI processing with fused responses. Routes prompts to multiple models simultaneously and merges outputs.</div>
-            <div class="project-tags">
-              <span class="tag">multi-model</span>
-              <span class="tag">fusion</span>
-              <span class="tag">android</span>
-            </div>
-          </div>
-          <span class="project-arrow">↗</span>
-        </a>
-
-      </div>
-
-      <p class="section-label" style="margin-top:32px">// utilities</p>
-      <div class="utils-grid">
-        <a class="util-item" href="https://github.com/earnerbaymalay/edge-sentinel" target="_blank">
-          <div class="util-name">edge sentinel</div>
-          <div class="util-desc">Security monitoring with a focused AI dashboard.</div>
-        </a>
-        <a class="util-item" href="https://github.com/earnerbaymalay/Termux-Vault" target="_blank">
-          <div class="util-name">termux-vault</div>
-          <div class="util-desc">Automated Termux configuration and backups.</div>
-        </a>
-        <a class="util-item" href="https://github.com/earnerbaymalay/multi-ai-terminal-setup" target="_blank">
-          <div class="util-name">multi-ai terminal</div>
-          <div class="util-desc">Unified Windows setup for major AI CLI tools.</div>
-        </a>
-        <a class="util-item" href="https://github.com/earnerbaymalay/nexus11-optimizer.py" target="_blank">
-          <div class="util-name">nexus optimizer</div>
-          <div class="util-desc">Privacy hardening and debloat for Windows.</div>
-        </a>
-        <a class="util-item" href="https://github.com/earnerbaymalay/ai-hub-widget" target="_blank">
-          <div class="util-name">ai hub widget</div>
-          <div class="util-desc">Desktop widget for managing AI CLI tools.</div>
-        </a>
-        <a class="util-item" href="https://github.com/earnerbaymalay/termux-ai-workspace" target="_blank">
-          <div class="util-name">termux-ai-workspace</div>
-          <div class="util-desc">Local-first AI environment on Android via Ollama.</div>
-        </a>
-      </div>
-    </section>
-
-    <section id="stack">
-      <p class="section-label">// stack &amp; tools</p>
-      <div class="stack-grid">
-        <div class="stack-item"><span class="dot"></span>Python</div>
-        <div class="stack-item"><span class="dot"></span>Bash / Zsh</div>
-        <div class="stack-item"><span class="dot"></span>Kotlin</div>
-        <div class="stack-item"><span class="dot"></span>Jetpack Compose</div>
-        <div class="stack-item"><span class="dot"></span>llama.cpp</div>
-        <div class="stack-item"><span class="dot"></span>Ollama</div>
-        <div class="stack-item"><span class="dot"></span>Termux</div>
-        <div class="stack-item"><span class="dot"></span>Android (no root)</div>
-        <div class="stack-item"><span class="dot"></span>WSL2 / Kali</div>
-        <div class="stack-item"><span class="dot"></span>Git / GitHub Actions</div>
-        <div class="stack-item"><span class="dot"></span>Gemini CLI</div>
-        <div class="stack-item"><span class="dot"></span>Claude Code</div>
-        <div class="stack-item"><span class="dot"></span>Aider</div>
-        <div class="stack-item"><span class="dot"></span>Obsidian</div>
-        <div class="stack-item"><span class="dot"></span>Syncthing</div>
-        <div class="stack-item"><span class="dot"></span>Flipper Zero</div>
-      </div>
-
-      <p class="section-label" style="margin-top:32px">// local models</p>
-      <div class="model-grid">
-        <div class="model-item">
-          <span class="model-name">aether-agent</span>
-          <span class="model-meta">custom · 2.1 GB</span>
-        </div>
-        <div class="model-item">
-          <span class="model-name">agent-3b</span>
-          <span class="model-meta">custom · 2.1 GB</span>
-        </div>
-        <div class="model-item">
-          <span class="model-name">emma</span>
-          <span class="model-meta">custom · 5.0 GB</span>
-        </div>
-        <div class="model-item">
-          <span class="model-name">llama3.2-3b</span>
-          <span class="model-meta">meta · 2.2 GB</span>
-        </div>
-        <div class="model-item">
-          <span class="model-name">qwen2.5-coder:1.5b</span>
-          <span class="model-meta">alibaba · 986 MB</span>
-        </div>
-        <div class="model-item">
-          <span class="model-name">qwen2.5:3b</span>
-          <span class="model-meta">alibaba · 1.9 GB</span>
-        </div>
-        <div class="model-item">
-          <span class="model-name">dolphin-phi</span>
-          <span class="model-meta">cognitive · 1.6 GB</span>
-        </div>
-        <div class="model-item">
-          <span class="model-name">qwen3-coder-next</span>
-          <span class="model-meta">cloud variant</span>
-        </div>
-      </div>
-    </section>
-
-    <section id="hardware">
-      <p class="section-label">// hardware</p>
-      <div class="hw-list">
-        <div class="hw-item">
-          <span class="hw-name">main pc</span>
-          <span class="hw-spec">i7-8700 · MSI Z390-A PRO · GTX 1660 · Windows + WSL2</span>
-        </div>
-        <div class="hw-item">
-          <span class="hw-name">phone</span>
-          <span class="hw-spec">Pixel 8 Pro · stock Android · Termux AI workspace</span>
-        </div>
-        <div class="hw-item">
-          <span class="hw-name">target device</span>
-          <span class="hw-spec">Nokia XR20 · Snapdragon 480 · ~4.5 GB usable · ≤3B param models</span>
-        </div>
-        <div class="hw-item">
-          <span class="hw-name">macbook</span>
-          <span class="hw-spec">A1708 · macOS via OpenCore Legacy Patcher</span>
-        </div>
-        <div class="hw-item">
-          <span class="hw-name">lenovo</span>
-          <span class="hw-spec">IdeaCentre · secondary workstation</span>
-        </div>
-        <div class="hw-item">
-          <span class="hw-name">rf research</span>
-          <span class="hw-spec">Flipper Zero · 433.92 MHz · Keeloq / rolling code protocols</span>
-        </div>
-      </div>
-    </section>
-
-    <section id="now">
-      <p class="section-label">// now</p>
-      <div class="terminal">
-        <div class="terminal-bar">
-          <span class="tb tb-r"></span>
-          <span class="tb tb-y"></span>
-          <span class="tb tb-g"></span>
-        </div>
-        <div class="terminal-body">
-          <div><span class="tl-prompt">earnzy@6K</span> <span class="tl-cmd">~ $ cat now.txt</span></div>
-          <div class="tl-cmt">&nbsp;</div>
-          <div><span class="tl-key">building</span><span class="tl-val">aether v26.04.2 — android · apple · desktop</span></div>
-          <div><span class="tl-key">shipping</span><span class="tl-val">earnerbaymalay.github.io/sideload/</span></div>
-          <div><span class="tl-key">repairing</span><span class="tl-val">phones &amp; laptops — resale via fb marketplace</span></div>
-          <div><span class="tl-key">studying</span><span class="tl-val">tafe diploma of it — next enrolment</span></div>
-          <div><span class="tl-key">running</span><span class="tl-val">11 local models · llama.cpp · ollama</span></div>
-          <div><span class="tl-key">researching</span><span class="tl-val">433mhz rf · keeloq rolling codes · flipper zero</span></div>
-          <div><span class="tl-key">tools</span><span class="tl-val">gemini cli (vim mode) · claude code · aider</span></div>
-          <div class="tl-cmt">&nbsp;</div>
-          <div><span class="tl-prompt">earnzy@6K</span> <span class="tl-cmd">~ $ </span><span style="color:var(--accent);animation:blink 1s step-end infinite">█</span></div>
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      <div class="footer-inner">
-        <span class="footer-copy">© 2025 earnzy · 6K, perth wa · MIT licensed</span>
-        <div class="footer-links">
-          <a href="https://github.com/earnerbaymalay" target="_blank">github</a>
-          <a href="https://earnerbaymalay.github.io/sideload/" target="_blank">sideload</a>
-          <a href="https://instagram.com/verswun" target="_blank">instagram</a>
-        </div>
-      </div>
-    </footer>
-
-  </div>
-</body>
-</html>
+        .at-symbol {
+            font-size: 0.45em;
+            vertical-align: middle;
+            color: var(--accent);
