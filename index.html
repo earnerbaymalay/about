@@ -12,17 +12,17 @@ Here is the fixed version with the hardware-intensive SVG noise filter removed s
   <style>
     :root {
       /* Nocta Palette: Creams, Whites, and Browns */
-      --bg:        #f5f3eb; /* Light cream background */
-      --surface:   #ffffff; /* Clean white for cards */
-      --surface2:  #ebe7dc; /* Darker cream for hover states */
-      --border:    #dbd5c6; /* Beige borders */
-      --dim:       #c2bba8; /* Dimmed elements */
-      --accent:    #6b5744; /* Nocta brown */
-      --accent2:   #8f7860; /* Lighter brown accent */
-      --accent3:   #3e3126; /* Deep brown / near black for headings */
-      --text:      #2c241c; /* Primary dark brown text */
-      --muted:     #7a6f62; /* Muted text */
-      --green:     #738c66; /* Muted green for status */
+      --bg:        #f5f3eb;
+      --surface:   #ffffff;
+      --surface2:  #ebe7dc;
+      --border:    #dbd5c6;
+      --dim:       #c2bba8;
+      --accent:    #6b5744;
+      --accent2:   #8f7860;
+      --accent3:   #3e3126;
+      --text:      #2c241c;
+      --muted:     #7a6f62;
+      --green:     #738c66;
       --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
       --font-sans: 'Inter', system-ui, sans-serif;
     }
@@ -39,7 +39,13 @@ Here is the fixed version with the hardware-intensive SVG noise filter removed s
       min-height: 100vh;
     }
 
-    /* SVG noise filter removed here to prevent mobile browser crashes */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      z-index: -2;
+    }
 
     body::after {
       content: '';
@@ -51,7 +57,7 @@ Here is the fixed version with the hardware-intensive SVG noise filter removed s
       height: 480px;
       background: radial-gradient(ellipse, rgba(107, 87, 68, 0.08) 0%, transparent 70%);
       pointer-events: none;
-      z-index: 0;
+      z-index: -1;
     }
 
     .container {
@@ -197,6 +203,18 @@ Here is the fixed version with the hardware-intensive SVG noise filter removed s
     }
 
     /* STACK */
+    .stack-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .stack-badges img {
+      height: 28px;
+      transition: transform 0.2s;
+    }
+    .stack-badges img:hover {
+      transform: scale(1.05);
+    }
     .stack-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
@@ -255,7 +273,7 @@ Here is the fixed version with the hardware-intensive SVG noise filter removed s
     .hw-item {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 16px; 
+      border-radius: 16px;
       padding: 13px 18px;
       display: flex;
       align-items: baseline;
@@ -270,6 +288,38 @@ Here is the fixed version with the hardware-intensive SVG noise filter removed s
       flex-shrink: 0;
     }
     .hw-spec { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+    /* STATS */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+      overflow: hidden;
+    }
+    .stat-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .stats-streak {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+      overflow: hidden;
+    }
+    .stats-streak img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
 
     /* PROJECTS */
     .project-list { display: flex; flex-direction: column; gap: 8px; }
@@ -589,23 +639,22 @@ Here is the fixed version with the hardware-intensive SVG noise filter removed s
 
     <section id="stack">
       <p class="section-label">// stack &amp; tools</p>
-      <div class="stack-grid">
-        <div class="stack-item"><span class="dot"></span>Python</div>
-        <div class="stack-item"><span class="dot"></span>Bash / Zsh</div>
-        <div class="stack-item"><span class="dot"></span>Kotlin</div>
-        <div class="stack-item"><span class="dot"></span>Jetpack Compose</div>
-        <div class="stack-item"><span class="dot"></span>llama.cpp</div>
-        <div class="stack-item"><span class="dot"></span>Ollama</div>
-        <div class="stack-item"><span class="dot"></span>Termux</div>
-        <div class="stack-item"><span class="dot"></span>Android (no root)</div>
-        <div class="stack-item"><span class="dot"></span>WSL2 / Kali</div>
-        <div class="stack-item"><span class="dot"></span>Git / GitHub Actions</div>
-        <div class="stack-item"><span class="dot"></span>Gemini CLI</div>
-        <div class="stack-item"><span class="dot"></span>Claude Code</div>
-        <div class="stack-item"><span class="dot"></span>Aider</div>
-        <div class="stack-item"><span class="dot"></span>Obsidian</div>
-        <div class="stack-item"><span class="dot"></span>Syncthing</div>
-        <div class="stack-item"><span class="dot"></span>Flipper Zero</div>
+      <div class="stack-badges">
+        <a href="https://www.python.org/" target="_blank"><img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" /></a>
+        <a href="https://www.gnu.org/software/bash/" target="_blank"><img src="https://img.shields.io/badge/Bash-4EAA25?style=for-the-badge&logo=gnu-bash&logoColor=white" alt="Bash" /></a>
+        <a href="https://kotlinlang.org/" target="_blank"><img src="https://img.shields.io/badge/Kotlin-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white" alt="Kotlin" /></a>
+        <a href="https://developer.android.com/jetpack/compose" target="_blank"><img src="https://img.shields.io/badge/Jetpack%20Compose-4285F4?style=for-the-badge&logo=android&logoColor=white" alt="Jetpack Compose" /></a>
+        <a href="https://github.com/ggerganov/llama.cpp" target="_blank"><img src="https://img.shields.io/badge/llama.cpp-000000?style=for-the-badge&logo=github&logoColor=white" alt="llama.cpp" /></a>
+        <a href="https://ollama.com/" target="_blank"><img src="https://img.shields.io/badge/Ollama-FF6C37?style=for-the-badge&logo=ollama&logoColor=white" alt="Ollama" /></a>
+        <a href="https://termux.dev/" target="_blank"><img src="https://img.shields.io/badge/Termux-000000?style=for-the-badge&logo=termux&logoColor=white" alt="Termux" /></a>
+        <a href="https://www.android.com/" target="_blank"><img src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Android" /></a>
+        <a href="https://learn.microsoft.com/en-us/windows/wsl/" target="_blank"><img src="https://img.shields.io/badge/WSL2-0078D6?style=for-the-badge&logo=linux&logoColor=white" alt="WSL2" /></a>
+        <a href="https://github.com/features/actions" target="_blank"><img src="https://img.shields.io/badge/GitHub%20Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white" alt="GitHub Actions" /></a>
+        <a href="https://git-scm.com/" target="_blank"><img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git" /></a>
+        <a href="https://aider.chat/" target="_blank"><img src="https://img.shields.io/badge/Aider-000000?style=for-the-badge&logo=ai&logoColor=white" alt="Aider" /></a>
+        <a href="https://obsidian.md/" target="_blank"><img src="https://img.shields.io/badge/Obsidian-7C3AED?style=for-the-badge&logo=obsidian&logoColor=white" alt="Obsidian" /></a>
+        <a href="https://syncthing.net/" target="_blank"><img src="https://img.shields.io/badge/Syncthing-0094FF?style=for-the-badge&logo=syncthing&logoColor=white" alt="Syncthing" /></a>
+        <a href="https://flipperzero.one/" target="_blank"><img src="https://img.shields.io/badge/Flipper%20Zero-FF8C00?style=for-the-badge&logo=flipperzero&logoColor=white" alt="Flipper Zero" /></a>
       </div>
 
       <p class="section-label" style="margin-top:32px">// local models</p>
@@ -672,6 +721,21 @@ Here is the fixed version with the hardware-intensive SVG noise filter removed s
           <span class="hw-name">rf research</span>
           <span class="hw-spec">Flipper Zero · 433.92 MHz · Keeloq / rolling code protocols</span>
         </div>
+      </div>
+    </section>
+
+    <section id="stats">
+      <p class="section-label">// github stats</p>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <img src="https://github-readme-stats.vercel.app/api?username=earnerbaymalay&show_icons=true&theme=transparent&hide_border=true&title_color=6b5744&icon_color=8f7860&text_color=2c241c&bg_color=00000000" alt="GitHub Stats" />
+        </div>
+        <div class="stat-card">
+          <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=earnerbaymalay&layout=compact&theme=transparent&hide_border=true&title_color=6b5744&text_color=2c241c&bg_color=00000000" alt="Top Languages" />
+        </div>
+      </div>
+      <div class="stats-streak">
+        <img src="https://github-readme-streak-stats.herokuapp.com/?user=earnerbaymalay&theme=transparent&hide_border=true&background=00000000&fire=738c66&currStreakNum=6b5744&sideNum=8f7860&ring=6b5744&dates=7a6f62" alt="Commit Streak" />
       </div>
     </section>
 
