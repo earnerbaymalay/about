@@ -1,42 +1,30 @@
-/*!
-    * Start Bootstrap - Resume v6.0.2 (https://startbootstrap.com/theme/resume)
-    * Copyright 2013-2020 Start Bootstrap
-    * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-resume/blob/master/LICENSE)
-    */
-    (function ($) {
-    "use strict"; // Start of use strict
+document.addEventListener("DOMContentLoaded", () => {
+    // Console Easter Egg
+    console.log("%c[SYSTEM INITIALIZED]", "color: #FBC02D; font-weight: bold; font-size: 14px;");
+    console.log("%cDeadly Sing - Portfolio loaded.", "color: #27c93f;");
+    console.log("%cCurrently deploying from West Perth.", "color: #a1a1aa;");
 
-    // Smooth scrolling using jQuery easing
-    $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function () {
-        if (
-            location.pathname.replace(/^\//, "") ==
-                this.pathname.replace(/^\//, "") &&
-            location.hostname == this.hostname
-        ) {
-            var target = $(this.hash);
-            target = target.length
-                ? target
-                : $("[name=" + this.hash.slice(1) + "]");
-            if (target.length) {
-                $("html, body").animate(
-                    {
-                        scrollTop: target.offset().top,
-                    },
-                    1000,
-                    "easeInOutExpo"
-                );
-                return false;
+    // Terminal Typing Effect for the H1
+    const titleElement = document.querySelector('h1');
+    if (titleElement) {
+        const originalText = titleElement.innerText;
+        titleElement.innerHTML = ''; // Clear it initially
+        
+        // Add cursor span
+        const cursor = document.createElement('span');
+        cursor.className = 'cursor';
+        
+        let i = 0;
+        const typeWriter = () => {
+            if (i < originalText.length) {
+                // Insert text before the cursor
+                titleElement.insertBefore(document.createTextNode(originalText.charAt(i)), cursor);
+                i++;
+                setTimeout(typeWriter, 100); // Typing speed
             }
-        }
-    });
+        };
 
-    // Closes responsive menu when a scroll trigger link is clicked
-    $(".js-scroll-trigger").click(function () {
-        $(".navbar-collapse").collapse("hide");
-    });
-
-    // Activate scrollspy to add active class to navbar items on scroll
-    $("body").scrollspy({
-        target: "#sideNav",
-    });
-})(jQuery); // End of use strict
+        titleElement.appendChild(cursor);
+        setTimeout(typeWriter, 500); // Initial delay
+    }
+});
