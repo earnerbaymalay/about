@@ -1,85 +1,74 @@
-```
-$$\                                                   $$\                     
-$$ |                                                  $$ |                    
-$$$$$$\   $$$$$$\   $$$$$$\  $$$$$$$\   $$$$$$\   $$$$$$\  $$$$$$$\   $$$$$$\  $$\   $$\ $$$$$$\$$$$\   $$$$$$\  $$ | $$$$$$\  $$\   $$\ 
-$$  __$$\  \____$$\ $$  __$$\ $$  __$$\ $$  __$$\ $$  __$$\ $$  __$$\  \____$$\ $$ |  $$ |$$  _$$  _$$\  \____$$\ $$ | \____$$\ $$ |  $$ |
-$$$$$$$$ | $$$$$$$ |$$ |  \__|$$ |  $$ |$$$$$$$$ |$$ |  \__|$$ |  $$ | $$$$$$$ |$$ |  $$ |$$ / $$ / $$ | $$$$$$$ |$$ | $$$$$$$ |$$ |  $$ |
-$$   ____|$$  __$$ |$$ |      $$ |  $$ |$$   ____|$$ |      $$ |  $$ |$$  __$$ |$$ |  $$ |$$ | $$ | $$ |$$  __$$ |$$ |$$  __$$ |$$ |  $$ |
-\$$$$$$$\ \$$$$$$$ |$$ |      $$ |  $$ |\$$$$$$$\ $$ |      $$$$$$$  |\$$$$$$$ |\$$$$$$$ |$$ | $$ | $$ |\$$$$$$$ |$$ |\$$$$$$$ |\$$$$$$$ |
- \_______| \_______|\__|      \__|  \__| \_______|\__|      \_______/  \_______| \____$$ |\__| \__| \__| \_______|\__| \_______| \____$$ |
-                                                                                $$\   $$ |                                      $$\   $$ |
-                                                                                \$$$$$$  |                                      \$$$$$$  |
-                                                                                 \______/                                        \______/
-```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EARNZY | Sovereign AI Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+        :root { --bg: #050505; --glass: rgba(255, 255, 255, 0.03); --accent: #3b82f6; }
+        body { background-color: var(--bg); color: #e2e8f0; font-family: 'Space Grotesk', sans-serif; min-height: 100vh; }
+        .liquid-glass { background: var(--glass); backdrop-filter: blur(20px) saturate(180%); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+    </style>
+</head>
+<body class="p-6 md:p-12 selection:bg-blue-500/30">
+    <nav class="fixed top-0 left-0 w-full z-50 liquid-glass border-b border-white/5 py-4 px-6 flex justify-between items-center">
+        <div class="flex items-center gap-3">
+            <span class="text-xl font-bold tracking-widest">EARNZY</span>
+        </div>
+        <div class="flex gap-6 text-xs font-bold tracking-widest">
+            <a href="https://earnerbaymalay.github.io/" class="hover:text-blue-400">HUB</a>
+            <a href="https://earnerbaymalay.github.io/sideload/" class="hover:text-blue-400">SIDELOAD</a>
+            <a href="https://github.com/earnerbaymalay" class="text-blue-400">GITHUB</a>
+        </div>
+    </nav>
 
----
+    <main class="max-w-4xl mx-auto pt-24">
+        <header class="mb-20 text-center md:text-left">
+            <h1 class="text-6xl md:text-8xl font-bold tracking-tighter mb-6">Hello, I'm <span class="text-blue-500">Earnzy.</span></h1>
+            <p class="text-xl text-slate-400 font-light max-w-2xl">
+                Builder, Repair Technician, and Local-AI Developer based in Perth, Western Australia. 
+                I build sovereign tools that run on your device, not someone else's server.
+            </p>
+        </header>
 
-Identity & Ethos
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
+            <div class="liquid-glass p-8 rounded-3xl">
+                <h2 class="text-xs font-bold tracking-[0.3em] text-blue-400 mb-6 uppercase">Current Focus</h2>
+                <ul class="space-y-4 text-sm text-slate-300 mono">
+                    <li>→ Evolving the Aether Neural Ecosystem</li>
+                    <li>→ Local AI Agent Autonomy (Absolute Autonomy)</li>
+                    <li>→ Air-gapped Hardware Telemetry (Edge Sentinel)</li>
+                    <li>→ RF Research & Keeloq Protocols</li>
+                </ul>
+            </div>
+            <div class="liquid-glass p-8 rounded-3xl">
+                <h2 class="text-xs font-bold tracking-[0.3em] text-purple-400 mb-6 uppercase">Hardware Stack</h2>
+                <div class="space-y-2 text-[10px] mono">
+                    <div class="flex justify-between border-b border-white/5 pb-2"><span>PC</span><span>i7-8700 | GTX 1660 | WSL2</span></div>
+                    <div class="flex justify-between border-b border-white/5 pb-2"><span>Mobile</span><span>Pixel 8 Pro | Snapdragon 8 Gen 3</span></div>
+                    <div class="flex justify-between border-b border-white/5 pb-2"><span>Lab</span><span>Flipper Zero | Nokia XR20 Node</span></div>
+                    <div class="flex justify-between"><span>Target</span><span>Ultra-Efficient ARM64 Workstations</span></div>
+                </div>
+            </div>
+        </section>
 
-```yaml
-identity:
-  name: earnzy
-  location: Perth, Western Australia
-  occupation: Builder, Repair Technician, Local-AI Developer
-  status: open to work (Perth or remote)
-ethos:
-  principle: Build things that run on your device, not someone else's server.
-  values:
-    - free
-    - open source
-    - offline-first
-current_focus:
-  - Improving Aether (v26.04.2) for Android, Apple, and Desktop.
-  - Shipping content for earnerbaymalay.github.io/sideload/.
-  - Repairing phones & laptops for resale via FB Marketplace.
-  - Studying Tafe Diploma of IT (next enrolment).
-  - Running 11 local models via llama.cpp and Ollama.
-  - Researching 433MHz RF, Keeloq rolling codes, and Flipper Zero.
-```
+        <section class="mb-20">
+            <h2 class="text-2xl font-bold mb-8 tracking-tight">Identity & Ethos</h2>
+            <div class="bg-blue-500/5 border border-blue-500/10 p-8 rounded-3xl">
+                <p class="text-lg leading-relaxed text-slate-300 italic">
+                    "Build things that respect the user. Offline-first, zero-telemetry, 
+                    and total data sovereignty aren't features—they are foundational rights."
+                </p>
+            </div>
+        </section>
 
----
-
-Stack & Tools
-
----
-
-Local AI Models
-
-```yaml
-local_models:
-  - name: aether-agent
-    variant: custom
-    size: 2.1 GB
-    constraints: [3B parameter]
-  - name: llama3.2-3b
-    variant: meta
-    size: 2.2 GB
-    constraints: [3B parameter]
-  - name: qwen2.5-coder:1.5b
-    variant: alibaba
-    size: 986 MB
-    constraints: [1.5B parameter]
-  - name: qwen2.5:3b
-    variant: alibaba
-    size: 1.9 GB
-    constraints: [3B parameter]
-  - name: dolphin-phi
-    variant: cognitive
-    size: 1.6 GB
-    constraints: [2.7B parameter]
-```
-
----
-
-Hardware
-
-Component	Specification	
-Main PC	i7-8700 · MSI Z390-A PRO · GTX 1660 · Windows + WSL2	
-Phone	Pixel 8 Pro · stock Android · Termux AI workspace	
-Target Device	Nokia XR20 · Snapdragon 480 · 4.5 GB usable · ≤3B param models	
-MacBook	A1708 · macOS via OpenCore Legacy Patcher	
-RF Research	Flipper Zero · 433.92 MHz · Keeloq / rolling code protocols	
-
----
-
-GitHub Stats
+        <footer class="text-center text-[10px] text-slate-600 tracking-widest font-bold pt-20">
+            &copy; 2026 EARNZY | AETHER NEURAL SYSTEMS
+        </footer>
+    </main>
+</body>
+</html>
